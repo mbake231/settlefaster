@@ -1,0 +1,71 @@
+.hidden {
+  display: none !important;
+}
+
+.hidebox {
+  display:none;
+}
+
+.playerin {
+  display: inline-block;
+  margin: auto;
+  width: 20%;
+  border: 1px solid;
+  text-align: left;
+
+}
+.man {
+  position: relative;
+  top: 20px;
+}
+.top{
+  font-size: 120px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  text-align: center;
+}
+
+.playerinfo {
+  font-size: 30px;
+  text-align: center;
+
+}​
+
+.bottombar{
+  display: inline-block !important;
+  width: 500px;
+
+
+}
+.controls {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  text-align: center;
+}
+
+#name {
+	font-size: 100px;
+	text-align: center;
+}
+
+#time {
+	font-size: 80px;
+	text-align: center;
+}
+
+.playerbox {
+  text-align: center;
+
+}
+
+.player {
+  display: inline-block;
+  margin: auto;
+  width: 20%;
+  border: 1px solid;
+  text-align: left;
+}​
+
+
+

@@ -1,0 +1,155 @@
+<head>
+	<script src="settle.js"></script> 
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="css/default.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/component.css" />
+	<script src="js/modernizr.custom.js"></script>
+</head>
+
+<title>Settle Faster</title>
+
+<body>
+
+<div id="topbar" class="top">Settle <img class="man" src="man.png"></img> Faster</div>
+
+
+
+
+		<div id="setup">
+			<div class="main clearfix">
+				<form id="nl-form" class="nl-form">
+					I'm playing with
+					<select id="numPlayers">
+						<option value="2" selected>2 people</option>
+						<option value="3">3 people</option>
+						<option value="4">4 people</option>
+					</select>
+					and want the game to last
+					<input id="length" type="text" class="txtwid" value="40" placeholder="40" onkeypress='return event.charCode >= 48 && event.charCode <= 57'maxlength='3'/> minutes. 
+					<div class="nl-submit-wrap">
+						<button class="nl-submit" type="button" onClick="settleFast()">Enter player info</button>
+					</div>
+					<div class="nl-overlay"></div>
+				</form>
+			</div>
+		</div>
+		
+<!-- end/container -->
+
+<div id="playerInfo" class="playerinfo">
+	<div id="p1" num="0" class="playerin hidden">Player 1
+		<div id="nameinfo">Name: <input id="n1"/></div>
+		<div id="colorinfo"> Color: 
+					<select id="c1">
+						<option value="red" selected>Red</option>
+						<option value="blue">Blue</option>
+						<option value="white" >White</option>
+						<option value="orange">Orange</option>
+						<option value="green">Green</option>
+						<option value="brown">Brown</option>
+					</select>
+		</div>
+	</div>
+	<div id="p2" num="0" class="playerin hidden">Player 2
+		<div id="nameinfo">Name: <input id="n2"/></div>
+		<div id="colorinfo"> Color: 
+					<select id="c2">
+						<option value="red" >Red</option>
+						<option value="blue" selected>Blue</option>
+						<option value="white" >White</option>
+						<option value="orange">Orange</option>
+						<option value="green">Green</option>
+						<option value="brown">Brown</option>
+					</select>
+		</div>
+	</div>
+	<div id="p3" num="0" class="playerin hidden">Player 3
+		<div id="nameinfo">Name: <input id="n3"/></div>
+		<div id="colorinfo"> Color: 
+					<select id="c3">
+						<option value="red" >Red</option>
+						<option value="blue">Blue</option>
+						<option value="white" selected>White</option>
+						<option value="orange">Orange</option>
+						<option value="green">Green</option>
+						<option value="brown">Brown</option>
+					</select>
+		</div>
+	</div>
+	<div id="p4" num="0" class="playerin hidden">Player 4
+		<div id="nameinfo">Name: <input id="n4"/></div>
+		<div id="colorinfo"> Color: 
+					<select id="c4">
+						<option value="red" >Red</option>
+						<option value="blue">Blue</option>
+						<option value="white" >White</option>
+						<option value="orange" selected>Orange</option>
+						<option value="green">Green</option>
+						<option value="brown">Brown</option>
+					</select>
+		</div>
+	</div>
+
+			<div class="main clearfix">
+				<form id="nl-form" class="nl-form">
+					<div id="infobut" class="nl-submit-wrap hidden">
+						<button class="nl-submit" type="button" onClick="startGame()">Settle!</button>
+					</div>
+				</form>
+			</div>
+</div>
+
+
+
+<div id="players" class="playerbox">
+	<div id="player0" num="0" class="player hidden">
+		<div id="name"><div id="pname0">NaN</div></div>
+		<div id="time"><div id="ptime0">NaN</div></div>
+
+	</div>
+	<div id="player1" class="player hidden">
+		<div id="name"><div id="pname1">NaN</div></div>
+		<div id="time"><div id="ptime1">NaN</div></div>
+
+	</div>
+	<div id="player2" class="player hidden">
+		<div id="name"><div id="pname2">NaN</div></div>
+		<div id="time"><div id="ptime2">NaN</div></div>
+	</div>
+	<div id="player3" class="player hidden">
+		<div id="name"><div id="pname3">NaN</div></div>
+		<div id="time"><div id="ptime3">NaN</div></div>
+
+	</div>
+
+	<div class="main clearfix">
+				<form id="nl-form" class="nl-form">
+					<div id="start" class="nl-submit-wrap hidden">
+						<button class="nl-submit" type="button" onClick="start(0)">Start</button>
+					</div>
+				</form>
+	</div>
+
+	<div class="bottombar">
+		<div class="main clearfix">
+				<form id="nl-form" class="nl-form">
+					<div id="endGlobe" class="nl-submit-wrap hidden">
+						<button class="nl-submit" type="button" onclick="endTurn(parseInt(document.getElementById('currentplayer').innerHTML))">End turn</button>
+					</div>
+
+				</form>
+		</div>
+		<img id="paused" class="pause hidden" src="pause.png" onclick="pauseTurn(parseInt(document.getElementById('currentplayer').innerHTML))"/>
+					
+	</div>
+</div>
+
+<div id="currentplayer" class="hidden">x</div>
+
+
+</body>
+<div>Icons made by <a href="http://www.flaticon.com/authors/google" title="Google">Google</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+
+<div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
